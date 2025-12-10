@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai Multilingual Detection - Language & Audio Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fa-solid fa-language"></i> Ai Multilingual Detection </h1>
+            <p>Advanced Multilingual Detection & Transcription</p>
+        </header>
+
+        <main>
+            <!-- Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('text-tab')"><i class="fa-solid fa-align-left"></i> Text
+                    Analysis</button>
+                <button class="tab-btn" onclick="openTab('media-tab')"><i class="fa-solid fa-video"></i> Audio/Video
+                    Analysis</button>
+            </div>
+
+            <!-- Text Analysis Tab -->
+            <div id="text-tab" class="tab-content active">
+                <div class="input-group">
+                    <textarea id="text-input" placeholder="Type or paste text here (any language)..."></textarea>
+                    <button id="analyze-text-btn" class="primary-btn"><i class="fa-solid fa-magnifying-glass"></i>
+                        Detect Language</button>
+                </div>
+            </div>
+
+            <!-- Media Analysis Tab -->
+            <div id="media-tab" class="tab-content">
+                <div class="upload-area" id="drop-zone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p>Drag & Drop Audio or Video here</p>
+                    <p class="small">or click to browse</p>
+                    <input type="file" id="file-input" hidden accept="audio/*,video/*">
+                </div>
+                <div id="file-info" class="hidden">
+                    <p><i class="fa-solid fa-file"></i> <span id="filename"></span></p>
+                    <div class="file-actions">
+                        <button id="analyze-file-btn" class="primary-btn">Analyze File</button>
+                        <button id="remove-file-btn" class="icon-btn" title="Remove file"><i
+                                class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="results-container hidden">
+                <h2>Analysis Results</h2>
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Processing with AI...</p>
+                </div>
+
+                <div id="result-content" class="hidden">
+                    <div class="result-grid">
+                        <div class="card metric-card">
+                            <h4>Language</h4>
+                            <p id="res-language" class="highlight">-</p>
+                        </div>
+                        <div class="card metric-card">
+                            <h4>Confidence</h4>
+                            <p id="res-confidence" class="highlight">-</p>
+                        </div>
+                        <div class="card metric-card">
+                            <h4>Time Taken</h4>
+                            <p id="res-time" class="highlight">-</p>
+                        </div>
+                    </div>
+
+                    <div class="card full-width">
+                        <h4>Translation / Summary</h4>
+                        <p id="res-translation" class="text-content">-</p>
+                    </div>
+
+                    <div id="transcription-card" class="result-card hidden">
+                        <h3>Transcription</h3>
+                        <div class="transcription-box">
+                            <p id="transcription-text"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>A Demo Project by <a href="https://in.linkedin.com/in/sanoobar-shan"
+                    style="color: rgb(95, 92, 252); text-decoration: none; font-weight: bold; cursor: pointer;"
+                    onmouseover="this.style.color='rgb(95, 92, 252)';" onmouseout="this.style.color='red';">Sanoobar
+                    Shan</a></p>
+        </footer>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
